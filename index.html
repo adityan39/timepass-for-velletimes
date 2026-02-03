@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine Prank 😈</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@600&display=swap" rel="stylesheet">
+<style>
+  /* BODY + BACKGROUND */
+  body {
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    background: radial-gradient(circle at top, #ffdde1, #ee9ca7);
+    position: relative;
+  }
+
+  /* FLOATING MIDDLE FINGERS */
+  .finger {
+    position: absolute;
+    bottom: -50px;
+    font-size: 30px;
+    animation: floatUp 6s linear infinite;
+    opacity: 0.7;
+  }
+
+  @keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-120vh); opacity: 0; }
+  }
+
+  /* CONTAINER */
+  .container {
+    text-align: center;
+    z-index: 10;
+    position: relative;
+  }
+
+  h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+  }
+
+  button {
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    position: absolute;
+    transition: all 0.3s ease;
+  }
+
+  #yesBtn {
+    background-color: #4CAF50;
+    color: white;
+    left: 45%;
+  }
+
+  #noBtn {
+    background-color: #f44336;
+    color: white;
+    left: 55%;
+  }
+
+  .images {
+    display: none;
+    margin-top: 30px;
+  }
+
+  .images img {
+    width: 150px;
+    margin: 10px;
+    border-radius: 15px;
+  }
+</style>
+</head>
+<body>
+
+<!-- FLOATING MIDDLE FINGERS -->
+<div class="finger" style="left:10%; animation-delay:0s;">🖕</div>
+<div class="finger" style="left:25%; animation-delay:2s;">🖕</div>
+<div class="finger" style="left:40%; animation-delay:4s;">🖕</div>
+<div class="finger" style="left:60%; animation-delay:1s;">🖕</div>
+<div class="finger" style="left:75%; animation-delay:3s;">🖕</div>
+<div class="finger" style="left:90%; animation-delay:5s;">🖕</div>
+
+<div class="container">
+  <h1 id="question">Will you be my Valentine? 💘</h1>
+
+  <button id="yesBtn">YES 😍</button>
+  <button id="noBtn">NO 😒</button>
+
+  <div class="images" id="images">
+    <!-- Replace with your GIFs -->
+    <img src="https://pin.it/4knB3PKvx">
+    <img src="https://pin.it/4X6uDrliy">
+    <img src="https://pin.it/7gZH58vAc">
+  </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const question = document.getElementById("question");
+const images = document.getElementById("images");
+
+let yesScale = 1;
+let noScale = 1;
+
+// Function to move NO button (desktop + mobile) + shrink
+function moveNo() {
+  const x = Math.random() * (window.innerWidth - 100);
+  const y = Math.random() * (window.innerHeight - 50);
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+
+  // Shrink NO button
+  noScale = noScale * 0.9;
+  noBtn.style.transform = `scale(${noScale})`;
+
+  // Grow YES button
+  yesScale += 0.1;
+  yesBtn.style.transform = `scale(${yesScale})`;
+}
+
+// Desktop hover
+noBtn.addEventListener("mouseover", moveNo);
+// Mobile touch
+noBtn.addEventListener("touchstart", moveNo);
+
+// YES click
+yesBtn.addEventListener("click", () => {
+  question.innerText = "YAYYY 😭💖 I KNEW IT";
+  noBtn.style.display = "none";
+  yesBtn.style.display = "none";
+  images.style.display = "block";
+});
+</script>
+
+</body>
+</html>
